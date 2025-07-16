@@ -64,10 +64,12 @@
             transition: transform 0.3s ease;
         }
         
-        /* --- Collapsible Section Styles --- */
+         /* --- Collapsible Section Styles --- */
         .section-header {
             color: white;
-            padding: 15px 20px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 0;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -76,104 +78,104 @@
         }
         
         .section-header.active {
-             border-bottom-left-radius: 0;
-             border-bottom-right-radius: 0;
+             margin-bottom: 15px;
         }
-        
         .section-header .arrow { 
             transition: transform 0.3s; 
-            font-size: 1.4rem;
-            font-weight: bold;
+            font-size: 1.2rem;
         }
-        
         .section-header.active .arrow { 
             transform: rotate(90deg); 
         }
-        
         .section-content {
             display: none;
-            padding: 20px;
-            background-color: #f8fafc; /* Lighter content background */
+            padding: 0 10px;
             text-align: center;
         }
-        
         .section-content.active { 
             display: block; 
         }
-        
         .header-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 600;
         }
         
         /* --- สีที่แตกต่างกันสำหรับแต่ละ Header --- */
-        .container .card:nth-of-type(1) .section-header { background-color: #2563eb; } /* Blue */
-        .container .card:nth-of-type(2) .section-header { background-color: #16a34a; } /* Green */
-        .container .card:nth-of-type(3) .section-header { background-color: #9333ea; } /* Purple */
+        .container .card:nth-of-type(1) .section-header { background-color: #2c5282; }
+        .container .card:nth-of-type(1) .section-header:hover { background-color: #3b71ca; }
+        .container .card:nth-of-type(2) .section-header { background-color: #2F855A; }
+        .container .card:nth-of-type(2) .section-header:hover { background-color: #38A169; }
+        .container .card:nth-of-type(3) .section-header { background-color: #5A428B; }
+        .container .card:nth-of-type(3) .section-header:hover { background-color: #6B46C1; }
 
         .section-subtitle {
             font-size: 1rem;
-            color: #4b5563; /* Gray text */
-            margin-bottom: 25px;
+            color: #1d4ed8;
+            margin-bottom: 20px;
         }
 
         /* --- Button Grid Layout --- */
         .button-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            gap: 12px;
         }
 
         /* --- Base Button Styling --- */
         .btn {
+            flex-basis: 140px; 
+            flex-grow: 1;
+            max-width: 220px;
             display: block;
-            padding: 14px 20px; 
+            padding: 12px 15px; 
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             color: #ffffff;
-            font-size: 1rem; 
+            font-size: 0.95rem; 
             font-weight: 500;
             font-family: 'Kanit', sans-serif;
             cursor: pointer;
-            text-align: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.12);
         }
 
         /* --- สีปุ่มเมนูย่อยให้แตกต่างกันในแต่ละปุ่ม --- */
-        .button-grid .btn.color-1 { background-image: linear-gradient(45deg, #3b82f6, #60a5fa); }
-        .button-grid .btn.color-2 { background-image: linear-gradient(45deg, #22c55e, #4ade80); }
-        .button-grid .btn.color-3 { background-image: linear-gradient(45deg, #f97316, #fb923c); }
-        .button-grid .btn.color-4 { background-image: linear-gradient(45deg, #a855f7, #c084fc); }
-        .button-grid .btn.color-5 { background-image: linear-gradient(45deg, #ef4444, #f87171); }
-        .button-grid .btn.color-6 { background-image: linear-gradient(45deg, #6366f1, #818cf8); } /* Indigo */
-        .button-grid .btn.color-7 { background-image: linear-gradient(45deg, #84cc16, #a3e635); } /* Lime */
-        .button-grid .btn.color-8 { background-image: linear-gradient(45deg, #d946ef, #e879f9); } /* Fuchsia */
-        .button-grid .btn.color-9 { background-image: linear-gradient(45deg, #f59e0b, #facc15); } /* Amber */
-        
+        .button-grid .btn:nth-of-type(1) { background-image: linear-gradient(45deg, #2563eb, #60a5fa); }
+        .button-grid .btn:nth-of-type(1):hover { background-image: linear-gradient(45deg, #60a5fa, #93c5fd); }
+        .button-grid .btn:nth-of-type(2) { background-image: linear-gradient(45deg, #16a34a, #4ade80); }
+        .button-grid .btn:nth-of-type(2):hover { background-image: linear-gradient(45deg, #4ade80, #86efac); }
+        .button-grid .btn:nth-of-type(3) { background-image: linear-gradient(45deg, #f97316, #fbbf24); }
+        .button-grid .btn:nth-of-type(3):hover { background-image: linear-gradient(45deg, #fbbf24, #fcd34d); }
+        .button-grid .btn:nth-of-type(4) { background-image: linear-gradient(45deg, #7c3aed, #a78bfa); }
+        .button-grid .btn:nth-of-type(4):hover { background-image: linear-gradient(45deg, #a78bfa, #c4b5fd); }
+        .button-grid .btn:nth-of-type(5) { background-image: linear-gradient(45deg, #dc2626, #f87171); }
+        .button-grid .btn:nth-of-type(5):hover { background-image: linear-gradient(45deg, #f87171, #fca5a5); }
+
         /* --- Footer --- */
         footer {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
-            font-size: 0.9rem;
-            color: #64748b;
+            font-size: 0.875rem;
+            color: #3b82f6;
         }
 
-        /* --- Responsive Styles for Mobile --- */
+        /* --- Responsive Styles for Mobile (ยืนยันว่าเหมาะสม) --- */
         @media (max-width: 600px) {
-            body { padding: 15px 10px; }
-            .container { gap: 20px; }
-            .header-title { font-size: 1.2rem; }
-            .btn { font-size: 0.95rem; }
-            .button-grid { grid-template-columns: 1fr 1fr; } /* 2 columns on mobile */
+            body { padding: 15px; }
+            .card { padding: 12px; }
+            .header-title { font-size: 1.1rem; }
+            .section-subtitle { font-size: 0.9rem; margin-bottom: 20px; }
+            .btn { padding: 14px 15px; } /* เพิ่ม padding แนวตั้งเล็กน้อยเพื่อให้กดง่ายขึ้น */
         }
     </style>
+
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
