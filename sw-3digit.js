@@ -1,4 +1,4 @@
-const CACHE_NAME = 'juckphai-3digit-translator-v1';
+const CACHE_NAME = 'juckphai-3digit-translator-v3';
 const urlsToCache = [
   './',
   './02.html',
