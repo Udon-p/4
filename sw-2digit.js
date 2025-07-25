@@ -1,4 +1,4 @@
-const CACHE_NAME = 'juckphai-2digit-app-v1';
+const CACHE_NAME = 'juckphai-2digit-app-v2';
 const urlsToCache = [
   './',
   './01.html',
