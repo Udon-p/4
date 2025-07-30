@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ผลฉลากกินแบ่งรัฐบาล</title>
 
-       <!-- PWA-related tags -->
+    <!-- PWA-related tags -->
     <meta name="theme-color" content="#e65100"/>
     <link rel="manifest" href="manifest-รัฐบาล.json">
     <link rel="apple-touch-icon" href="192.png">
@@ -13,6 +13,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ผลรัฐบาล">
     <!-- End of PWA-related additions -->
+
+    <!-- START: Dependencies for Datepicker -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Thai localization for Datepicker -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+    <!-- END: Dependencies for Datepicker -->
 
 
     <style>
@@ -47,7 +55,7 @@
             margin: 20px auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 3px solid green;
+            border: 2px solid green;
             padding: 10px;
             line-height: 0.6;
             max-width: 500px;
@@ -65,7 +73,7 @@
             padding: 8px;
             margin: 5px 0;
             border: 2px solid #ddd;
-            border-radius: 5px;
+            border-radius: 2px;
             width: 100%;
             max-width: 150px;
             transition: border-color 0.3s;
@@ -76,33 +84,36 @@
             justify-content: center;
         }
         
-        /* -------- START: POPUP STYLES -------- */
+        /* -------- START: POPUP STYLES (MODIFIED TO MATCH 01.HTML) -------- */
         .popup-overlay {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            min-height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
+            padding: 10px 0; /* No horizontal padding */
             align-items: center;
-            /* === CHANGE HERE: ปรับ padding ให้ด้านซ้าย-ขวาเหลือ 5px === */
-            padding: 10px 5px; 
             box-sizing: border-box;
         }
 
         .popup-content {
-            background-color: transparent; /* Make wrapper transparent */
-            border-radius: 10px; /* Match the inner container */
+            background-color:  #FFFFE7; /* Yellow background from 01.html */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
             width: 100%;
             max-width: 600px;
+            padding: 25px 5px; /* Padding from 01.html to create inner space */
             position: relative;
-            text-align: center; /* Center the close button */
+            box-sizing: border-box;
         }
         
         .close-popup {
+            display: block;
+            margin: 15px auto 0;
             border: none;
             border-radius: 5px;
             font-weight: bold;
@@ -111,25 +122,25 @@
             transition: background-color 0.3s;
             padding: 10px 20px;
             background-color: #f44336;
-            width: 100%;
+            width: 90%;
             max-width: 200px;
             font-size: 16px;
-            margin-top: 15px; /* Space between results and button */
         }
 
         .close-popup:hover {
             background-color: #d32f2f;
         }
-        /* -------- END: POPUP STYLES -------- */
+        /* -------- END: POPUP STYLES (MODIFIED) -------- */
 
 
         .result-display {
-            background-color: #FFFFE7;
+            background-color:  #FFFFE7; /* Inner background color from 01.html */
             padding: 10px;
             border-radius: 10px;
-            border: 2px solid green;
+            border: 1.5px solid #4CAF50; /* Green border color from 01.html */
             text-align: center;
             position: relative;
+            box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2); /* Shadow from 01.html */
         }
 
         .result-section {
