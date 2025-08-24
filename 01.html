@@ -328,8 +328,8 @@ function generate3DigitHTML(num, commonData) {
         <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุดเด่น 2 ตัว</h3> <p style="font-size: 24px; font-weight: bold; ${commonData.textShadow}">${firstSet.join(' - ')}</p>
         <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุดรอง 2 ตัว</h3> <p style="font-size: 24px; font-weight: bold; ${commonData.textShadow}">${secondSet.length > 0 ? secondSet.join(' - ') : noDataSpan}</p>
         <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุด 2 ตัว ${redSpan('(แปลเพิ่ม)')}</h3> <p style="font-size: 24px; font-weight: bold; ${commonData.textShadow}">${transformedPairs.length > 0 ? transformedPairs.join(' - ') : noDataSpan}</p>
-        <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุด 3 ตัว (ปกติ)</h3> <p style="font-size: 19px; font-weight: bold; ${commonData.textShadow}">${thirdSet.join(' - ')}</p>
-        <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุด 3 ตัว ${redSpan('(แปลเพิ่ม)')}</h3> <p style="font-size: 19px; font-weight: bold; ${commonData.textShadow}">${additional3d.length > 0 ? additional3d.join(' - ') : noDataSpan}</p>
+        <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุด 3 ตัว (ปกติ)</h3> <p style="font-size: 18px; font-weight: bold; ${commonData.textShadow}">${thirdSet.join(' - ')}</p>
+        <h3 style="font-weight: bold; ${commonData.textShadow}">จัดชุด 3 ตัว ${redSpan('(แปลเพิ่ม)')}</h3> <p style="font-size: 18px; font-weight: bold; ${commonData.textShadow}">${additional3d.length > 0 ? additional3d.join(' - ') : noDataSpan}</p>
         <h2 style="font-weight: bold; color: red; ${commonData.textShadow}">แนวทางเท่านั้น</h2>
         <p style="font-size: 13px; ${commonData.textShadow}">แปล: ${getThaiDate(new Date())} ${getThaiTime()}</p>
         <p style="font-size: 20px; ${commonData.textShadow}">${commonData.noteHtml.replace('No remarks', '<span style="color: red;">No remarks</span>')}</p>
