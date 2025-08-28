@@ -997,7 +997,16 @@ const lunarData = {
     function getTopicName() { const select = document.getElementById('topicSelect'); if (select.value === 'custom') { return document.getElementById('customTopicName').value.trim() || 'ไม่ระบุหัวข้อ'; } return select.options[select.selectedIndex].text.split(' เวลา ')[0]; }
     function getTopicTime() { const select = document.getElementById('topicSelect'); if (select.value === 'custom') { const time = document.getElementById('customTopicTime').value.trim(); return time ? `เวลา ${time} น.` : ''; } const parts = select.options[select.selectedIndex].text.split(' เวลา '); return parts.length > 1 ? `เวลา ${parts[1]}` : ''; }
 
-    function getThaiDate(date = new Date()) { const days = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"]; const months = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]; return `วัน${days[date.getDay()]}ที่ ${String(date.getDate()).padStart(2, '0')} ${months[date.getMonth()]} พ.ศ. ${date.getFullYear() + 543}`; }
+    function getThaiDate(date = new Date()) { const months = [
+    "มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
+    "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"
+  ];
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear() + 543;
+
+  return `วันที่ ${day} ${month} พ.ศ. ${year}`;
+}
     function getLunarDate(date) { const d = String(date.getDate()).padStart(2, '0'); const m = String(date.getMonth() + 1).padStart(2, '0'); const y = date.getFullYear() + 543; return lunarData[`${d}/${m}/${y}`] || ""; }
     function getThaiTime() { const now = new Date(); return `เวลา ${String(now.getHours()).padStart(2, '0')}.${String(now.getMinutes()).padStart(2, '0')} น.`; }
 
