@@ -985,7 +985,7 @@ const lunarData = {
   "31/12/2569": "วันพฤหัสบดี แรม 7 ค่ำ เดือนอ้าย (1) ปีมะเมีย"
 };
     
-    document.addEventListener('contextmenu', e => e.preventDefault());
+   document.addEventListener('contextmenu', e => e.preventDefault());
     
     function showResultPopup() { document.getElementById("resultPopupOverlay").style.display = "flex"; }
     function closeResultPopup() { document.getElementById("resultPopupOverlay").style.display = "none"; }
@@ -1005,7 +1005,13 @@ const lunarData = {
   const month = months[date.getMonth()];
   const year = date.getFullYear() + 543;
 
-  return ` ${day} ${month} พ.ศ. ${year}`;
+  return ` วันที่ ${day} ${month} พ.ศ. ${year}`;
+}
+function getShortThaiDate(date = new Date()) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear() + 543;
+    return `${day}/${month}/${year}`;
 }
     function getLunarDate(date) { const d = String(date.getDate()).padStart(2, '0'); const m = String(date.getMonth() + 1).padStart(2, '0'); const y = date.getFullYear() + 543; return lunarData[`${d}/${m}/${y}`] || ""; }
     function getThaiTime() { const now = new Date(); return `เวลา ${String(now.getHours()).padStart(2, '0')}.${String(now.getMinutes()).padStart(2, '0')} น.`; }
@@ -1087,8 +1093,8 @@ const lunarData = {
                 ${lunarHtml}
                 <h2 style="font-size: 22px; font-weight: bold; ${engravedShadowStyle}">By : <span style="color: green;">${getSelectedPerson()}</span> ${numberSetTitle} มีดังนี้</h2>
                 ${numberLines.join('')}
-                <h2 style="font-size: 24px; font-weight: bold; color: red; ${engravedShadowStyle} margin-top: 15px;">แนวทางเท่านั้น</h2>
-                <p style="font-size: 13px; ${engravedShadowStyle}">สร้างเมื่อ: ${getThaiDate()} ${getThaiTime()}</p>
+                <h2 style="font-size: 22px; font-weight: bold; color: red; ${engravedShadowStyle} margin-top: 15px;">แนวทางเท่านั้น</h2>
+                <p style="font-size: 16px;">แปล : ${getShortThaiDate(new Date())} ${getThaiTime()}</p>
                 <p style="font-size: 20px; ${engravedShadowStyle}">หมายเหตุ : ${noteInput}</p>
             </div>
         `;
