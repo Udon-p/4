@@ -149,10 +149,10 @@ input, select { font-size: 16px; padding: 8px; margin: 5px 0; border: 1.5px soli
     border: 2px solid #C66900;
 }
 /* Number Containers */
-.circle-container, .square-container, .square-two-container { display: inline-flex; justify-content: center; align-items: center; height: 38px; margin: 0 0.5px; padding: 5px; background: transparent; box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.4); }
-.circle-container { width: 88px; border: 3px solid #FF00FF; border-radius: 2%; }
-.square-container { width: 131px; border: 3px solid red; }
-.square-two-container { width: 88px; border: 3px solid blue; }
+.circle-container, .square-container, .square-two-container { display: inline-flex; justify-content: center; align-items: center; height: 50px; margin: 0 0.5px; padding: 2px; background: transparent; box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.4); }
+.circle-container { width: 100px; border: 3px solid #FF00FF; border-radius: 2%; }
+.square-container { width: 150px; border: 3px solid red; }
+.square-two-container { width: 100px; border: 3px solid blue; }
 /* Numbers Display */
 .numbers-display { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 5px; margin: 8px 0; }
 .number-group {
@@ -179,16 +179,95 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
     line-height: 0.5;
     max-width: 600px;
     text-align: center;
+    box-sizing: border-box;
 }
-.thai-lottery-form .form-group { margin-bottom: 10px; }
-.thai-lottery-form label { display: block; font-size: 18px; margin-bottom: 5px; }
-.thai-lottery-form input { font-size: 18px; padding: 8px; margin: 5px 0; border: 2px solid #ddd; border-radius: 2px; width: 100%; max-width: 150px; box-sizing: border-box; }
-.thai-lottery-form .input-pair { display: flex; justify-content: center; gap: 5px; }
-.thai-lottery-form .date-input-wrapper { display: flex; align-items: center; justify-content: center; gap: 3px; width: 100%; max-width: 150px; margin: 0 auto; }
-.thai-lottery-form .date-input-wrapper input#draw-date { flex-grow: 1; width: auto; max-width: none; margin: 0; text-align: center; }
-.thai-lottery-form .date-input-wrapper button#calendarButton { flex-shrink: 0; width: auto; max-width: none; margin: 0; padding: 8px 12px; font-size: 20px; background-color: #f0f0f0; border: 1.5px solid #ccc; cursor: pointer; border-radius: 2px; }
-.thai-lottery-form .date-input-wrapper button#calendarButton:hover { background-color: #e0e0e0; }
-.thai-lottery-form .button-container button { font-size: 22px; padding: 12px 20px; border-radius: 8px; cursor: pointer; background-color: #4CAF50; color: white; border: none; }
+
+.thai-lottery-form .form-group {
+    margin-bottom: 10px;
+}
+
+.thai-lottery-form label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.thai-lottery-form input {
+    font-size: 18px;
+    padding: 8px;
+    margin: 5px 0;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.thai-lottery-form .input-pair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    flex-wrap: nowrap; /* ✅ บังคับให้อยู่ในบรรทัดเดียว */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- เริ่มการแก้ไขสำหรับ input date ของรัฐบาลไทย --- */
+.thai-lottery-form .date-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%; /* ✅ เต็มกรอบสีเขียว */
+    box-sizing: border-box;
+    flex-wrap: nowrap; 
+}
+
+.thai-lottery-form .date-input-wrapper input[type="date"] {
+    flex: 1; /* ✅ ให้ input ยืดเต็มที่ */
+    min-width: 0; /* ป้องกันไม่ให้ล้น */
+}
+
+.thai-lottery-form .date-input-wrapper button {
+    flex-shrink: 0; /* ✅ ปุ่มไม่ถูกบีบ */
+    max-width: 120px; /* จำกัดความกว้างปุ่ม */
+    width: auto;
+}
+
+.thai-lottery-form .button-container button {
+    font-size: 20px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+/* ✅ Responsive ปรับสำหรับจอเล็ก */
+@media (max-width: 480px) {
+    .thai-lottery-form .date-input-wrapper {
+        gap: 6px;
+    }
+
+    .thai-lottery-form .date-input-wrapper button {
+        max-width: 100px;
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .thai-lottery-form .date-input-wrapper input[type="date"] {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
 
 /* Popup สำหรับรัฐบาลไทย */
 #thaiLotteryPopupOverlay {
@@ -384,7 +463,7 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
         </div>
     </div>
     
-    <div style="text-align: center; margin-bottom: 20px;">
+       <div style="text-align: center; margin-bottom: 20px;">
 &copy; 2025 Udon Don. All Rights Reserved.
 </div>
     
@@ -639,7 +718,7 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
             const { twoDigits } = getNumbersForToggle();
             
             if (button.classList.toggle("active")) {
-                display.innerHTML = `<div class="circle-container">${createPingPongNumbers(twoDigits, 'orange', 38, 20)}</div>`;
+                display.innerHTML = `<div class="circle-container">${createPingPongNumbers(twoDigits, 'orange', 50, 26)}</div>`;
             } else {
                 display.innerHTML = createPingPongNumbers(twoDigits, 'orange', 50, 26);
             }
@@ -651,7 +730,7 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
             const { threeDigits } = getNumbersForToggle();
 
             if (button.classList.toggle("active")) {
-                display.innerHTML = `<div class="square-container">${createPingPongNumbers(threeDigits, 'blue', 38, 20)}</div>`;
+                display.innerHTML = `<div class="square-container">${createPingPongNumbers(threeDigits, 'blue', 50, 26)}</div>`;
             } else {
                 display.innerHTML = createPingPongNumbers(threeDigits, 'blue', 50, 26);
             }
@@ -663,7 +742,7 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
             const { threeDigits, threeDigits_first, threeDigits_lastTwo } = getNumbersForToggle();
 
             if (button.classList.toggle("active")) {
-                display.innerHTML = `${createPingPongBall(threeDigits_first, 'blue', 38, 20)}<div class="square-two-container">${createPingPongNumbers(threeDigits_lastTwo, 'blue', 38, 20)}</div>`;
+                display.innerHTML = `${createPingPongBall(threeDigits_first, 'blue', 50, 26)}<div class="square-two-container">${createPingPongNumbers(threeDigits_lastTwo, 'blue', 50, 26)}</div>`;
             } else {
                 display.innerHTML = createPingPongNumbers(threeDigits, 'blue', 50, 26);
             }
@@ -683,7 +762,7 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
 
                 html2canvas(captureElement, {
                     useCORS: true,
-                    scale: 2.5,
+                    scale: 4,
                     backgroundColor: '#fffde7'
                 }).then(canvas => {
                     const link = document.createElement('a');
@@ -766,7 +845,7 @@ footer { text-align: center; margin: 15px 0; color: #666; padding: 10px 0; }
 
                 html2canvas(captureElement, {
                     useCORS: true,
-                    scale: 3,
+                    scale: 4,
                     backgroundColor: '#FFFFD1',
                     logging: false,
                     onclone: (document) => {
@@ -835,7 +914,6 @@ thaiHiddenDateInput.addEventListener('change', (e) => {
                 });
             }
         });
-
 
         // --- PWA Service Worker Registration ---
         if ('serviceWorker' in navigator) {
