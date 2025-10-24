@@ -1959,7 +1959,7 @@ return `
     ${getThaiDate(commonData.date)}
   </p>
   
-  ${commonData.lunarHtml}
+  ${commonData.lunarHtml ? `<div style="margin: 2px 0;">${commonData.lunarHtml}</div>` : ''}
   
   <!-- หัวข้อหลัก 4 ตัว -->
   <h2 style="font-size: calc(clamp(1.5rem, 5.5vw, 2rem) * var(--font-scale)); font-weight: normal;">
@@ -2088,7 +2088,7 @@ return `
     ${getThaiDate(commonData.date)}
   </p>
 
-  ${commonData.lunarHtml}
+  ${commonData.lunarHtml ? `<div style="margin: 2px 0;">${commonData.lunarHtml}</div>` : ''}
 
   <!-- หัวข้อหลัก 3 ตัว -->
   <h2 style="
@@ -2374,7 +2374,7 @@ return `
     ${getThaiDate(commonData.date)}
   </p>
 
-  ${commonData.lunarHtml}
+  ${commonData.lunarHtml ? `<div style="margin: 2px 0;">${commonData.lunarHtml}</div>` : ''}
 
   <!-- หัวข้อหลัก 2 ตัว -->
   <h2 style="
@@ -2463,7 +2463,6 @@ return `
 `;
 }
 
-// === MAIN DISPATCHER FUNCTION ===
 function generateResultHTML() {
   const num = document.getElementById("numberInput").value;
   if (isNaN(num) || (num.length < 2 || num.length > 4)) {
@@ -2486,18 +2485,25 @@ function generateResultHTML() {
   const lunarHtml = lunarDate ? 
     `<p class="lunar-date" style="color: ${lunarDate.includes('วันพระ') ? 'red' : 'green'};">( ${lunarDate} )</p>` : '';
 
-  const commonData = {
-    date: date,
-    topicName: getTopicName(),
-    topicTimeHtml: (() => { 
-      const t = getTopicTime(); 
-      return t ? `<p class="topic-time">${t}</p>` : ''; 
-    })(),
-    selectedPerson: getSelectedPerson(),
-    lunarHtml: lunarHtml, // ใช้ lunarHtml ที่ปรับปรุงแล้ว
-    noteHtml: `หมายเหตุ : ${noteValue ? `<span style="color: red;">${noteValue}</span>` : '<span style="color: red;">No remarks</span>'}`,
-    textShadow: engravedShadowStyle
-  };
+const commonData = {
+  date: date,
+  topicName: getTopicName(),
+  topicNameHtml: (() => { 
+    const name = getTopicName();
+    const time = getTopicTime();
+    // แก้ไขส่วนนี้ - แยกเป็นสองบรรทัด
+    return `<p class="topic-main">${name}</p>`; 
+  })(),
+  topicTimeHtml: (() => { 
+    const t = getTopicTime(); 
+    // แก้ไขส่วนนี้ - แสดงเวลาต่างหาก
+    return t ? `<p class="topic-time">เวลา ${t} น.</p>` : ''; 
+  })(),
+  selectedPerson: getSelectedPerson(),
+  lunarHtml: lunarHtml,
+  noteHtml: `หมายเหตุ : ${noteValue ? `<span style="color: red;">${noteValue}</span>` : '<span style="color: red;">No remarks</span>'}`,
+  textShadow: engravedShadowStyle
+};
 
   if (num.length === 2) { return generate2DigitHTML(num, commonData); }
   else if (num.length === 3) { return generate3DigitHTML(num, commonData); }
@@ -2593,7 +2599,7 @@ document.getElementById("saveResultAsImageBtn").addEventListener("click", functi
 
   controlsElement.style.display = 'none';
   const originalPadding = captureElement.style.padding;
-  captureElement.style.padding = '6px 4px 6px 4px';
+  captureElement.style.padding = '4px 4px 4px 4px';
 
   html2canvas(captureElement, {
     useCORS: true,
