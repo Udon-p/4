@@ -45,137 +45,281 @@
         /* --- Main Container --- */
         .container {
             max-width: 700px;
-            border: 2px solid #F77DDA;
+            border: 1.5px solid #F77DDA;
             background-color: #fffde7;
             border-radius: 15px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 15px;
+            padding: 15px;
         }
 
         /* --- Card Style for Sections --- */
         .card {
-            background-color: #FFFFE7;
+            background-color: #FFFFD1;
             border-radius: 15px;
-            border: 1px solid #0070C0;
+            border: 1.5px solid #0070C0;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
             overflow: hidden; /* Important for border-radius */
             transition: transform 0.3s ease;
         }
         
-         /* --- Collapsible Section Styles --- */
-        .section-header {
+        /* --- Main Section Styles --- */
+        .main-section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 20px;
-            border-radius: 10px;
-            margin-bottom: 0;
+            padding: 10px 15px;
+            margin: 0;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
         }
-        
-        .section-header.active {
-             margin-bottom: 15px;
+
+        .main-section-header:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
         }
-        .section-header .arrow { 
-            transition: transform 0.3s; 
-            font-size: 1.2rem;
+
+        .main-section-header.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
-        .section-header.active .arrow { 
-            transform: rotate(90deg); 
+
+        .main-section-header.active .arrow {
+            transform: rotate(90deg);
         }
-        .section-content {
+
+        .main-section-content {
             display: none;
-            padding: 0 10px;
-            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 0;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            width: 100%;
         }
-        .section-content.active { 
-            display: block; 
+
+        .main-section-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
         }
-        .header-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+
+        /* --- Sub-Section Styles --- */
+        .sub-section-header {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-left: 3px solid #667eea;
+            width: 100%;
+            font-size: 14px;
         }
-        
-        /* --- สีที่แตกต่างกันสำหรับแต่ละ Header --- */
-        .container .card:nth-of-type(1) .section-header { background-color: #2c5282; }
-        .container .card:nth-of-type(1) .section-header:hover { background-color: #3b71ca; }
-        .container .card:nth-of-type(2) .section-header { background-color: #2F855A; }
-        .container .card:nth-of-type(2) .section-header:hover { background-color: #38A169; }
-        .container .card:nth-of-type(3) .section-header { background-color: #5A428B; }
-        .container .card:nth-of-type(3) .section-header:hover { background-color: #6B46C1; }
+
+        .sub-section-header:hover {
+            background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%);
+            transform: translateX(3px);
+        }
+
+        .sub-section-header.active {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .sub-section-header.active .arrow {
+            transform: rotate(90deg);
+        }
+
+        .sub-section-content { 
+            display: none;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            margin: 3px 0 10px 0;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .sub-section-content.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        /* --- Section Header Variants --- */
+        .header-translate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .header-translate:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .header-translate.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .header-fill-form {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .header-fill-form:hover {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        }
+
+        .header-fill-form.active {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
 
         .section-subtitle {
-            font-size: 1rem;
-            color: #1d4ed8;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #4b5563; /* Gray text */
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         /* --- Button Grid Layout --- */
         .button-grid {
-            display: flex;
-            flex-wrap: wrap; 
-            justify-content: center;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 columns always */
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* สำหรับแถวที่มีปุ่มจำนวนคี่ - ปุ่มสุดท้ายจะอยู่กึ่งกลาง */
+        .button-grid.odd-items .btn:last-child {
+            grid-column: 1 / span 2;
+            justify-self: center;
+            max-width: 50%; /* จำกัดความกว้างสูงสุด */
         }
 
         /* --- Base Button Styling --- */
         .btn {
-            flex-basis: 140px; 
-            flex-grow: 1;
-            max-width: 220px;
-            display: block;
-            padding: 12px 15px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 8px; 
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             color: #ffffff;
-            font-size: 0.95rem; 
+            font-size: 0.85rem; 
             font-weight: 500;
             font-family: 'Kanit', sans-serif;
             cursor: pointer;
+            text-align: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-height: 44px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* --- สีปุ่มเมนูย่อยให้แตกต่างกันในแต่ละปุ่ม --- */
-        .button-grid .btn:nth-of-type(1) { background-image: linear-gradient(45deg, #2563eb, #60a5fa); }
-        .button-grid .btn:nth-of-type(1):hover { background-image: linear-gradient(45deg, #60a5fa, #93c5fd); }
-        .button-grid .btn:nth-of-type(2) { background-image: linear-gradient(45deg, #16a34a, #4ade80); }
-        .button-grid .btn:nth-of-type(2):hover { background-image: linear-gradient(45deg, #4ade80, #86efac); }
-        .button-grid .btn:nth-of-type(3) { background-image: linear-gradient(45deg, #f97316, #fbbf24); }
-        .button-grid .btn:nth-of-type(3):hover { background-image: linear-gradient(45deg, #fbbf24, #fcd34d); }
-        .button-grid .btn:nth-of-type(4) { background-image: linear-gradient(45deg, #7c3aed, #a78bfa); }
-        .button-grid .btn:nth-of-type(4):hover { background-image: linear-gradient(45deg, #a78bfa, #c4b5fd); }
-        .button-grid .btn:nth-of-type(5) { background-image: linear-gradient(45deg, #dc2626, #f87171); }
-        .button-grid .btn:nth-of-type(5):hover { background-image: linear-gradient(45deg, #f87171, #fca5a5); }
-
+        .button-grid .btn.color-1 { background-image: linear-gradient(45deg, #3b82f6, #60a5fa); }
+        .button-grid .btn.color-2 { background-image: linear-gradient(45deg, #22c55e, #4ade80); }
+        .button-grid .btn.color-3 { background-image: linear-gradient(45deg, #f97316, #fb923c); }
+        .button-grid .btn.color-4 { background-image: linear-gradient(45deg, #a855f7, #c084fc); }
+        .button-grid .btn.color-5 { background-image: linear-gradient(45deg, #ef4444, #f87171); }
+        .button-grid .btn.color-6 { background-image: linear-gradient(45deg, #6366f1, #818cf8); } /* Indigo */
+        .button-grid .btn.color-7 { background-image: linear-gradient(45deg, #84cc16, #a3e635); } /* Lime */
+        .button-grid .btn.color-8 { background-image: linear-gradient(45deg, #d946ef, #e879f9); } /* Fuchsia */
+        .button-grid .btn.color-9 { background-image: linear-gradient(45deg, #f59e0b, #facc15); } /* Amber */
+        
         /* --- Footer --- */
         footer {
-            margin-top: 40px;
+            margin-top: 20px;
             text-align: center;
-            font-size: 0.875rem;
-            color: #3b82f6;
+            font-size: 0.8rem;
+            color: #64748b;
         }
 
-        /* --- Responsive Styles for Mobile (ยืนยันว่าเหมาะสม) --- */
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-5px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes slideDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Styles for Mobile --- */
         @media (max-width: 600px) {
-            body { padding: 15px; }
-            .card { padding: 12px; }
-            .header-title { font-size: 1.1rem; }
-            .section-subtitle { font-size: 0.9rem; margin-bottom: 20px; }
-            .btn { padding: 14px 15px; } /* เพิ่ม padding แนวตั้งเล็กน้อยเพื่อให้กดง่ายขึ้น */
+            body { 
+                padding: 10px 5px; 
+            }
+            
+            .container { 
+                gap: 10px; 
+                padding: 10px;
+            }
+            
+            .main-section-header { 
+                font-size: 15px; 
+                padding: 8px 12px;
+            }
+            
+            .btn { 
+                font-size: 0.8rem; 
+                padding: 8px 6px;
+                min-height: 40px;
+            }
+            
+            /* ปรับให้ปุ่มแสดงใน 2 คอลัมน์เหมือนเดิม */
+            .button-grid { 
+                grid-template-columns: 1fr 1fr; /* 2 columns on mobile too */
+                gap: 8px;
+            }
+            
+            .section-subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 12px;
+            }
         }
     </style>
-
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -185,48 +329,57 @@
             window.location.href = url;
         }
 
-        function toggleSection(headerElement) {
-            const content = headerElement.nextElementSibling;
-            const isActive = headerElement.classList.contains('active');
+        function toggleMainSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            const header = content.previousElementSibling;
+            const isActive = header.classList.contains('active');
 
             // ปิด section อื่นๆ ทั้งหมดก่อน
-            document.querySelectorAll('.section-header.active').forEach(activeHeader => {
-                if (activeHeader !== headerElement) {
+            document.querySelectorAll('.main-section-header.active').forEach(activeHeader => {
+                if (activeHeader !== header) {
                     activeHeader.classList.remove('active');
-                    activeHeader.nextElementSibling.style.maxHeight = null;
+                    activeHeader.nextElementSibling.classList.remove('active');
                 }
             });
 
             // เปิด/ปิด section ที่เลือก
-            headerElement.classList.toggle('active', !isActive);
-            if (!isActive) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                content.style.maxHeight = null;
-            }
+            header.classList.toggle('active', !isActive);
+            content.classList.toggle('active', !isActive);
+        }
+
+        function toggleSubSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            const header = content.previousElementSibling;
+            
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        // ฟังก์ชันตรวจสอบจำนวนปุ่มและจัดกึ่งกลางเมื่อเป็นเลขคี่
+        function centerOddButtons() {
+            document.querySelectorAll('.button-grid').forEach(grid => {
+                const buttons = grid.querySelectorAll('.btn');
+                const buttonCount = buttons.length;
+                
+                // ถ้าจำนวนปุ่มเป็นเลขคี่ ให้เพิ่มคลาส odd-items
+                if (buttonCount % 2 !== 0) {
+                    grid.classList.add('odd-items');
+                } else {
+                    grid.classList.remove('odd-items');
+                }
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             // ทำให้ส่วนของ Section แรกเปิดอยู่เสมอเมื่อโหลดหน้า
-            const firstHeader = document.querySelector('.section-header');
+            const firstHeader = document.querySelector('.main-section-header');
             if (firstHeader) {
                 firstHeader.classList.add('active');
-                firstHeader.nextElementSibling.style.display = 'block'; // Set display to block
+                firstHeader.nextElementSibling.classList.add('active');
             }
-
-            // เพิ่ม Event Listener ให้กับทุก Header
-            document.querySelectorAll('.section-header').forEach(header => {
-                header.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const isActive = this.classList.toggle('active');
-                    
-                    if (isActive) {
-                        content.style.display = 'block';
-                    } else {
-                        content.style.display = 'none';
-                    }
-                });
-            });
+            
+            // ตรวจสอบและจัดกึ่งกลางปุ่มเมื่อเป็นเลขคี่
+            centerOddButtons();
         });
         
     </script>
@@ -236,11 +389,11 @@
     <div class="container">
         <!-- Section: แปลตัวเลข -->
         <div class="card">
-            <div class="section-header active">
-                <span class="header-title">เมนูฟอร์มแปลตัวเลข</span>
+            <div class="main-section-header header-translate active" onclick="toggleMainSection('translate-section')">
+                <span>เมนูฟอร์มแปลตัวเลข</span>
                 <span class="arrow">▶</span>
             </div>
-            <div id="translate-section" class="section-content active">
+            <div id="translate-section" class="main-section-content active">
                 <p class="section-subtitle">เลือกรายการแปลตัวเลขที่ต้องการใช้งาน</p>
                 <div class="button-grid">
                     <button class="btn color-1" onclick="navigateTo('https://udon-p.github.io/4/01.html')">แปล 2 ถึง 4 ตัว</button>
@@ -252,11 +405,11 @@
 
         <!-- Section: กรอกผลตัวเลข -->
         <div class="card">
-            <div class="section-header">
-                <span class="header-title">เมนูฟอร์มกรอกผลและดูผลตัวเลข</span>
+            <div class="main-section-header header-fill-form" onclick="toggleMainSection('fill-form-section')">
+                <span>เมนูฟอร์มกรอกผลและดูผลตัวเลข</span>
                 <span class="arrow">▶</span>
             </div>
-            <div id="fill-form-section" class="section-content">
+            <div id="fill-form-section" class="main-section-content">
                 <p class="section-subtitle">เลือกกลุ่มเพื่อกรอกผล</p>
                 <div class="button-grid">
                     <button class="btn color-6" onclick="navigateTo('https://udon-p.github.io/4/05.html')">กลุ่มลาว+รัฐบาล</button>
