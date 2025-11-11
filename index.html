@@ -18,6 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS Reset & Base Styles --- */
@@ -219,8 +222,8 @@
         .btn {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 10px 8px; 
+            justify-content: flex-start;
+            padding: 10px 12px; 
             border: none;
             border-radius: 8px;
             color: #ffffff;
@@ -228,7 +231,7 @@
             font-weight: 500;
             font-family: 'Kanit', sans-serif;
             cursor: pointer;
-            text-align: center;
+            text-align: left;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -237,6 +240,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            gap: 10px;
         }
 
         .btn:hover {
@@ -255,6 +259,14 @@
         .button-grid .btn.color-8 { background-image: linear-gradient(45deg, #d946ef, #e879f9); } /* Fuchsia */
         .button-grid .btn.color-9 { background-image: linear-gradient(45deg, #f59e0b, #facc15); } /* Amber */
         
+        /* --- Icon Styling --- */
+        .btn i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
         /* --- Footer --- */
         footer {
             margin-top: 20px;
@@ -304,8 +316,9 @@
             
             .btn { 
                 font-size: 0.8rem; 
-                padding: 8px 6px;
+                padding: 8px 10px;
                 min-height: 40px;
+                gap: 8px;
             }
             
             /* ปรับให้ปุ่มแสดงใน 2 คอลัมน์เหมือนเดิม */
@@ -317,6 +330,10 @@
             .section-subtitle {
                 font-size: 0.85rem;
                 margin-bottom: 12px;
+            }
+            
+            .btn i {
+                font-size: 1rem;
             }
         }
     </style>
@@ -390,15 +407,21 @@
         <!-- Section: แปลตัวเลข -->
         <div class="card">
             <div class="main-section-header header-translate active" onclick="toggleMainSection('translate-section')">
-                <span>เมนูฟอร์มแปลตัวเลข</span>
+                <span><i class="fas fa-language"></i> เมนูฟอร์มแปลตัวเลข</span>
                 <span class="arrow">▶</span>
             </div>
             <div id="translate-section" class="main-section-content active">
                 <p class="section-subtitle">เลือกรายการแปลตัวเลขที่ต้องการใช้งาน</p>
                 <div class="button-grid">
-                    <button class="btn color-1" onclick="navigateTo('https://udon-p.github.io/4/01.html')">แปล 2 ถึง 4 ตัว</button>
-                    <button class="btn color-2" onclick="navigateTo('https://udon-p.github.io/4/02.html')">แปล 2 ถึง 4 ตัว V 2</button>
-                    <button class="btn color-4" onclick="navigateTo('https://udon-p.github.io/4/04.html')">ไม่แปล 2 และ 3 ตัว</button>
+                    <button class="btn color-1" onclick="navigateTo('https://udon-p.github.io/4/01.html')">
+                        <i class="fas fa-exchange-alt"></i> แปล 2 ถึง 4 ตัว
+                    </button>
+                    <button class="btn color-2" onclick="navigateTo('https://udon-p.github.io/4/02.html')">
+                        <i class="fas fa-sync-alt"></i> แปล 2 ถึง 4 ตัว V 2
+                    </button>
+                    <button class="btn color-4" onclick="navigateTo('https://udon-p.github.io/4/04.html')">
+                        <i class="fas fa-ban"></i> ไม่แปล 2 และ 3 ตัว
+                    </button>
                 </div>
             </div>
         </div>
@@ -406,15 +429,21 @@
         <!-- Section: กรอกผลตัวเลข -->
         <div class="card">
             <div class="main-section-header header-fill-form" onclick="toggleMainSection('fill-form-section')">
-                <span>เมนูฟอร์มกรอกผลและดูผลตัวเลข</span>
+                <span><i class="fas fa-edit"></i> เมนูฟอร์มกรอกผลและดูผลตัวเลข</span>
                 <span class="arrow">▶</span>
             </div>
             <div id="fill-form-section" class="main-section-content">
                 <p class="section-subtitle">เลือกกลุ่มเพื่อกรอกผล</p>
                 <div class="button-grid">
-                    <button class="btn color-6" onclick="navigateTo('https://udon-p.github.io/4/05.html')">กลุ่มลาว+รัฐบาล</button>
-                    <button class="btn color-9" onclick="navigateTo('https://udon-p.github.io/4/09.html')">ดูผลลาว</button>
-                    <button class="btn color-3" onclick="navigateTo('https://udon-p.github.io/4/10.html')">ดูผลเวียดนาม</button>
+                    <button class="btn color-6" onclick="navigateTo('https://udon-p.github.io/4/05.html')">
+                        <i class="fas fa-users"></i> กลุ่มลาว+รัฐบาล
+                    </button>
+                    <button class="btn color-9" onclick="navigateTo('https://udon-p.github.io/4/09.html')">
+                        <i class="fas fa-eye"></i> ดูผลลาว
+                    </button>
+                    <button class="btn color-3" onclick="navigateTo('https://udon-p.github.io/4/10.html')">
+                        <i class="fas fa-globe-asia"></i> ดูผลเวียดนาม
+                    </button>
                 </div>
             </div>
         </div>
