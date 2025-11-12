@@ -40,7 +40,7 @@ background-color: #FEFEF0;
 margin: 30px auto;
 padding: 15px 5px;
 border-radius: 10px;
-width: 90%;
+width: 98%;
 max-width: 600px;
 box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
 box-sizing: border-box;
@@ -89,7 +89,7 @@ overflow-y: auto;
 
 .popup-content {
 background-color: #FFFFD1;
-border-radius: 15px;
+border-radius: 1px;
 box-shadow: 0 0 20px rgba(0,0,0,0.3);
 width: 100%;
 max-width: 600px;
@@ -98,7 +98,20 @@ position: relative;
 box-sizing: border-box;
 }
 
-.result-container-popup { border: 1.5px solid #4CAF50; background-color: #FFFFD1; margin: 0; padding: 15px 3px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2); position: relative; min-height: 300px; box-sizing: border-box; overflow: hidden; }
+.result-container-popup {
+    box-sizing: border-box;
+    min-height: 300px;
+    max-width: calc(100% - 2px);   /* ตรงกับด้านบน */
+    margin: 5px auto;              /* กึ่งกลาง พร้อมค่าบน-ล่าง 5px */
+    padding: 10px 2px;             /* ตรงกับด้านบน */
+    border: 1.5px solid #FF33CC;   /* ตรงกับด้านบน */
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    background-color: #FAFAD2;
+    box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
+}
 
 /* Result Header & Logo */
 .result-header { display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
